@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game loop</title>
+  <script src="../libs/stats.js"></script>
+  <script src="rect.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <canvas id="viewport" height="480" width="640"></canvas>
+
+  <script>
+    var stats = new Stats();
+    stats.getDomElement().style.position = 'absolute';
+    stats.getDomElement().style.right = '0px';
+    stats.getDomElement().style.top = '0px';
+
+    document.body.appendChild( stats.getDomElement() );
+    
+    Game.initialize();
+
+    // Add some moving rectangles
+    var i = 400;
+    while (i--) Game.addRect();
+
+    Game.run = function() {
+      setInterval(function() {
+        Game.draw();
+        Game.update();
+
+        // Update fps counter
+        stats.update();
+      }, 1000 / Game.fps);
+    };
+
+    Game.run();
+  </script>
+
+</body>
+</html>
