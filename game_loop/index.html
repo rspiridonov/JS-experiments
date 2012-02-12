@@ -19,6 +19,8 @@
     
     Game.initialize();
 
+    Game.context.canvas.addEventListener("click", testClick, false);
+
     // Add some moving rectangles
     var i = 400;
     while (i--) Game.addRect();
@@ -30,7 +32,7 @@
 
         // Update fps counter
         stats.update();
-      }, 1000 / Game.fps);
+      }, 5000 / Game.fps);
     };
 
     Game.run();
